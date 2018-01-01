@@ -4,7 +4,7 @@ module.exports = (router) => {
 
     router.post('/register', (req, res) => {
 
-        if (!req.body.eamil) {
+        if (!req.body.email) {
             res.json({ success: false, message: 'you must provide e-mail' });
         }
         else {
@@ -12,7 +12,7 @@ module.exports = (router) => {
             if (!req.body.username) {
                 res.json({ success: false, message: 'you must provide a username' });
 
-            } else
+            } else{
 
                 if (!req.body.password) {
                     res.json({ success: false, message: 'you must provide a password' });
@@ -35,14 +35,15 @@ module.exports = (router) => {
                                     success: false, message: 'could not save user.Error:', err
                                 }); 
 
- 
+                            
                             }  
 
                         } else {
                             res.json({ success: true, message: 'user saved !' });
                         }
+                    
                     });
-
+                }
                 } 
         }
     });
