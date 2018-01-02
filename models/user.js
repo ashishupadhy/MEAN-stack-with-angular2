@@ -30,10 +30,6 @@ let validEmailChecker = (email) => {
 
 
 
-
-
-
-
 const emailValidators = [{
     validator: emailLengthChecker,
     message: 'E mail must be atleast of 5 char but not more than 30'
@@ -108,7 +104,7 @@ userSchema.pre('save', function (next) {
     bcrypt.hash(this.password, null, null, (err, hash) => {
         if (err) return next(err);
         this.password = hash;
-        next();
+        next(); 
     });
 });
 

@@ -12,7 +12,11 @@ module.exports = (router) => {
             if (!req.body.username) {
                 res.json({ success: false, message: 'you must provide a username' });
 
+<<<<<<< HEAD
             } else {
+=======
+            } else{
+>>>>>>> 20c6a8b3b2991eaf3f1a1db4f1ff9e18cef100f4
 
                 if (!req.body.password) {
                     res.json({ success: false, message: 'you must provide a password' });
@@ -59,6 +63,7 @@ module.exports = (router) => {
                             
                         
 
+<<<<<<< HEAD
                         // res.json({
                         //     success: false, message: 'could not save user.Error:', err
                         // });
@@ -72,6 +77,17 @@ module.exports = (router) => {
 
             });
 }
+=======
+                            
+                            }  
+
+                        } else {
+                            res.json({ success: true, message: 'user saved !' });
+                        }
+                    
+                    });
+                }
+>>>>>>> 20c6a8b3b2991eaf3f1a1db4f1ff9e18cef100f4
                 } 
         }
     });
