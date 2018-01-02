@@ -1,4 +1,4 @@
-  const express = require('express');
+const express = require('express');
 const app = express();//initial express application
 const router = express.Router();
 const mongoose = require('mongoose');  //node tool for mongodb
@@ -6,7 +6,6 @@ const config = require('./config/database');//mongooes config
 const path = require('path');  //nodejs package for file path
 const authentication = require('./routes/authentication')(router);
 const bodyParser = require('body-parser');
-const bcrypt=require('bcrypt-nodejs');
 
 
 
