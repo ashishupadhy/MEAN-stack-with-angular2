@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormGroup,Validators}from'@angular/forms';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -9,8 +11,15 @@ export class RegisterComponent implements OnInit {
 
 form:FormGroup;
 
- cerateForm(){
-  this.form=this.FormBuilder.group({
+ constructor(
+    private formBuilder:FormBuilder
+  ) {
+this.createForm();
+
+   }
+
+ createForm(){
+  this.form=this.formBuilder.group({
     email:'',
     username:'',
     password:'',
@@ -20,18 +29,9 @@ form:FormGroup;
 }
 
 
-  constructor(
-    private FormBuilder:FormBuilder
-  ) {
-this.cerateForm()
-
-   }
-
-
 
   ngOnInit() {
   }
 
 }
 
-this.createForm()
