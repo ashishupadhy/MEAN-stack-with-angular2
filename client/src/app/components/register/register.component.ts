@@ -8,9 +8,17 @@ import {FormBuilder,FormGroup,Validators}from'@angular/forms';
 export class RegisterComponent implements OnInit {
 
 form:FormGroup;
+constructor(
+    private FormBuilder:FormBuilder
+  ) {
+ this.cerateForm()
+
+   }
+
 
  cerateForm(){
   this.form=this.FormBuilder.group({
+  
     email:'',
     username:'',
     password:'',
@@ -18,15 +26,13 @@ form:FormGroup;
 
   })
 }
+onRegisterSubmilt(){
+  console.log(this.form);
+}
 
 
-  constructor(
-    private FormBuilder:FormBuilder
-  ) {
-this.cerateForm()
 
-   }
-
+  
 
 
   ngOnInit() {
@@ -34,4 +40,5 @@ this.cerateForm()
 
 }
 
-this.createForm()
+// this.createForm()
+  
