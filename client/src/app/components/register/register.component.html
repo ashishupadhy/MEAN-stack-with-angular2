@@ -1,0 +1,43 @@
+<h1 class="page-header">Register Page</h1>
+
+
+<form >
+
+
+  <div class="form-group">
+    <label for="username">Username</label>
+   <div>
+      <input type="text" name="username" class="form-control" autocomplete="off" 
+      placeholder="*Username" formControlName="ussername"/>
+  </div>
+    </div>
+      
+      
+  <div class="form-group">
+    <label for="email">Email</label>
+  <div>
+      <input type="text" name="email" class="form-control" autocomplete="off"
+       placeholder="*Email" formControlName="email"/>
+  </div>
+    </div>
+      
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div>
+    
+      <input type="password" name="password" class="form-control" autocomplete="off"
+       placeholder="*Password" formControlName="password"/>
+    
+    </div>
+  </div>
+
+  
+
+  <!-- Submit Input -->
+  <input  type="submit" class="btn btn-primary" value="Submit" formControlName="confirm"/>
+
+</form>
+
+<p>Username:{{form.control.username.value}}</p>
+<p>Email:{{form.control.email.value}}</p>
+<p>Password:{{form.control.password.value}}</p>
