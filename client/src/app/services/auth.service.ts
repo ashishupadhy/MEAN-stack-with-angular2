@@ -14,11 +14,11 @@ registerUser(user){
 }
 
 checkUsername(username){
-  return this.http.get(this.domain +'/authentication/checkUsername/'+username).map(res=>res.json());
+  return this.http.get(this.domain +'/authentication/checkUsername/'+ username).map(res=>res.json());
 }
   
 checkEmail(email){
-  return this.http.get(this.domain +'/authentication/checkEmail'+email).map(res=>res.json());
+  return this.http.get(this.domain +'/authentication/checkEmail/'+ email).map(res=>res.json());
 }
   
   
