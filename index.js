@@ -32,8 +32,8 @@ app.use(express.static(__dirname +'/client/dist/'));
 app.use('/authentication', authentication);
 
 app.get('*',(req,res)=>{
-res.sendFile(path.join(__dirname + '/client/dist/index.html'))
-})
+res.sendFile(path.join(__dirname +'/client/dist/index.html'));
+});
 
 // app.get('*', (req, res) => {
 //     res.send('<h1>hello world');
