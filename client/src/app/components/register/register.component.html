@@ -53,7 +53,8 @@
     <label for="password">Password</label>
     <div [ngClass]="{'has-error': (form.controls.password.errors && form.controls.password.dirty), 'has-success': 
     !form.controls.password.errors}">
-     <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password"/>
+     <input type="password" name="password" class="form-control" autocomplete="off" 
+     placeholder="*Password" formControlName="password" (blur)="checkUsername()"/>
 
       <!-- Validation -->
       <ul class="help-block">

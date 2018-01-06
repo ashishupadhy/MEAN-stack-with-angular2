@@ -154,13 +154,13 @@ export class RegisterComponent implements OnInit {
 
 
   checkUsername() {
-    this.authService.checkEmail(this.form.get('email').value).subscribe(data => {
+    this.authService.checkUsername(this.form.get('username').value).subscribe(data => {
       if (!data.success) {
-        this.emailValid = false;  
-        this.emailMessage = data.message;  
+        this.usernameValid = false;  
+        this.usernameMessage = data.message;  
       } else {
-        this.emailValid = true;
-        this.emailMessage = data.message;
+        this.usernameValid = true;
+        this.usernameMessage = data.message;
       }
     });
 
