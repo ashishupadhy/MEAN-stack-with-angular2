@@ -23,7 +23,7 @@
          form.controls.username.errors?.maxlength && form.controls.username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
         <li *ngIf="form.controls.username.errors?.validateUsername && form.controls.username.dirty">Username must not have any special characters</li>
 
-        <li*ngIf="usernameMessage">{{usernameMessage}}</li>
+        <li *ngIf="usernameMessage">{{usernameMessage}}</li>
       </ul>
     </div>
   </div>
