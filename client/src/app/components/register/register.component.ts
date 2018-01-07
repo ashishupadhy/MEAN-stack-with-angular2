@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import{Router}from  '@angular/router'
+
+
+
+
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -20,7 +28,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router:Router
   ) {
     this.createForm(); // Create Angular 2 Form when component loads
   }
@@ -118,7 +127,7 @@ export class RegisterComponent implements OnInit {
 
   // Function to submit form
   onRegisterSubmit() {
-    this.processing = true
+    this.processing = true;
     this.disableForm();
     const user = {
       email: this.form.get('email').value,
@@ -130,15 +139,19 @@ export class RegisterComponent implements OnInit {
       if (!data.success) {
         this.messageClass = 'alert alert-danger';
         this.message = data.message;
-        this.processing = false;
+         this.processing = false;
         this.enableForm();
       } else {
         this.messageClass = 'alert alert-success';
         this.message = data.message;
+        setTimeout(()=>{
+          this.router.navigate((['/login']));
+
+        }, 2000)
       }
     });
   }
-
+  
   checkEmail() {
     this.authService.checkEmail(this.form.get('email').value).subscribe(data => {
       if (!data.success) {
