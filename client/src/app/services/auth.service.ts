@@ -9,18 +9,18 @@ domain="http://localhost:8080"
   constructor
   (  private http:Http) { }                    
 
-registerUser(user){
+registerUser(user) {
   return this.http.post(this.domain +'/authentication/register',user).map(res=>res.json());
 }
 
-checkUsername(username){
+checkUsername(username) {
   return this.http.get(this.domain +'/authentication/checkUsername/'+ username).map(res=>res.json());
 }
   
-checkEmail(email){
+checkEmail(email) {
   return this.http.get(this.domain +'/authentication/checkEmail/'+ email).map(res=>res.json());
 }
-  
+    
   
 }
   
