@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import{NavbarComponent} from './components/navbar/navbar.component';
 import { RegisterComponent } from './components/register/register.component';
 import{AuthService}from './services/auth.service';
+import { LoginComponent } from './components/login/login.component';
 
 
 
@@ -14,7 +15,8 @@ import{AuthService}from './services/auth.service';
   declarations: [ 
     AppComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
    
   ],
   imports: [
