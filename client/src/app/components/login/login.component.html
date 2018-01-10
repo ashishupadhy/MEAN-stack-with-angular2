@@ -1,11 +1,14 @@
-<h2 class="page-header">Login</h2>
-
-<div class="row show-hide-message">
+<div class="jumbotron jumbotron-fluid">
+   <div class="container"> <br><br>
+    <h1> Please Login</h1>
+  
+<div class="row show-hide-message"> 
   <div [ngClass]="messageClass">
     {{ message }}
   </div>
 </div>
 
+ <link rel="icon" href="../../../../favicon.ico">
 
 <form [formGroup]="form" (submit)="onLoginSubmit()">
   <div class="form-group">
@@ -37,3 +40,6 @@
 
   <input [disabled]="!form.valid || processing" class="btn btn-primary" type="submit" value="Login" />
 </form>
+
+
+    
