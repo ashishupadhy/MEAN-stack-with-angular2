@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-
+  
   username = '';
   email = '';
 
@@ -17,10 +17,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     // Once component loads, get user's data to display on profile
-    this.authService.getProfile().subscribe(profile => {
+    this.authService.getProfile().subscribe (profile => {
       this.username = profile.user.username; // Set username
       this.email = profile.user.email; // Set e-mail
     });
   }
 
 }
+
