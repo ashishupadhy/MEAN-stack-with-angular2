@@ -30,15 +30,6 @@
         <li *ngIf="form.controls.username.errors?.minlength && form.controls.username.dirty ||
          form.controls.username.errors?.maxlength && form.controls.username.dirty ">Minimum characters: 3, Maximum characters: 15</li>
         <li *ngIf="form.controls.username.errors?.validateUsername && form.controls.username.dirty">Username must not have any special characters</li>
-<<<<<<< HEAD
-        <li *ngIf="usernameMessage">{{usernameMessage}}</li>
-||||||| merged common ancestors
-
-        <li*ngIf="usernameMessage">{{usernameMessage}}</li>
-=======
-
-        <li *ngIf="usernameMessage">{{usernameMessage}}</li>
->>>>>>> 086ca3327f622d59d09929f2b90a39e004f446ae
       </ul>
     </div>
   </div>

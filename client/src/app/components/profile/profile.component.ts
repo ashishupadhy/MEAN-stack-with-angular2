@@ -8,8 +8,8 @@ import { AuthService } from '../../services/auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-  username = '';
-  email = '';
+  username;
+  email;
 
   constructor(
     private authService: AuthService
