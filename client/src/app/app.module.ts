@@ -9,6 +9,13 @@ import { RegisterComponent } from './components/register/register.component';
 import{AuthService}from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+// import { FlashMessagesModule } from 'angular2-flash-messages';
+import{AuthGuard} from './guards/auth.guard';
+
+
+
+
+
 
 
 
@@ -16,7 +23,7 @@ import { ProfileComponent } from './components/profile/profile.component';
   declarations: [ 
     AppComponent,
     NavbarComponent,
-    RegisterComponent,
+    RegisterComponent,  
     LoginComponent,
     ProfileComponent
    
@@ -25,7 +32,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     BrowserModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    // FlashMessagesModule
+    
+
     
     
   ],
