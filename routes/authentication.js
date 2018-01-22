@@ -158,7 +158,8 @@ module.exports = (router) => {
        if (! token){
            res.json({ success: false, message:'No token provided'});
        } else {
-           jwt.verify(token, config.secret, (err, decoded) => {
+         
+        jwt.verify(token, config.secret, (err, decoded) => {
                if(err) {
                    res.json({success: false, message: 'Token invalid: ' + err });
                }else {
