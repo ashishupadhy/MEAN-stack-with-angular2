@@ -14,7 +14,7 @@ options;
   constructor 
   (  private http:Http) { }   
   
-  createAuthenticationHeaders () {
+  createAuthenticationHeaders() {
     this.loadToken();
     this.options = new RequestOptions({
       headers: new Headers({
