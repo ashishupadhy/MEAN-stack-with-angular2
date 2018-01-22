@@ -15,11 +15,11 @@ options;
   (  private http:Http) { }   
   
   createAuthenticationHeaders() {
-    this.loadToken();
+     this.loadToken();
     this.options = new RequestOptions({
       headers: new Headers({
-        'Content-Type':'application/json',
-        'authoriztion': this.authToken
+        'Content-Type': 'application/json',
+        'authorization': this.authToken
 
       })
     });

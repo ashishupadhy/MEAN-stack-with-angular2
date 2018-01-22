@@ -11,15 +11,15 @@ import{ProfileComponent} from './components/profile/profile.component';
 
 const appRoutes:Routes=[
   { path:'',
-  component:HomeComponent 
+  component: HomeComponent 
 },
 
  { path:'dashboard',
-  component:DashboardComponent 
+  component: DashboardComponent    
 },
 {
   path:'register',
-  component:RegisterComponent
+  component: RegisterComponent
 },
 
 {
@@ -29,11 +29,10 @@ const appRoutes:Routes=[
 
 {
   path:'login',
-  component:LoginComponent
+  component: LoginComponent
 },
 
- { path:'**',
-  component:HomeComponent 
+ { path:'**', component: HomeComponent 
 }
 
 
