@@ -10,7 +10,7 @@ import{AuthService}from './services/auth.service';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
-// import{AuthGuard} from './guards/auth.guard';
+import{AuthGuard} from './gaurds/auth.guards';
 
 
 
@@ -39,7 +39,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     
     
   ],
-  providers: [AuthService],
+  providers: [AuthService , AuthGuard],
   bootstrap: [AppComponent,]
 })
 export class AppModule { }
