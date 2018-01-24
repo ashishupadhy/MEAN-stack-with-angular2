@@ -1,6 +1,7 @@
   import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+
 @Injectable()
 export class AuthService {
 
@@ -43,6 +44,14 @@ checkEmail(email) {
 login(user){
   return this.http.post(this.domain + '/authentication/login',user).map(res =>res.json())
 }
+
+ logout(){
+   this.authToken= null;
+   this.user= null;
+   localStorage.clear();
+ }
+
+
 storeUserData(token,user){
   localStorage.setItem('token',token); 
   localStorage.setItem('user',JSON.stringify(user));

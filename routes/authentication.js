@@ -155,7 +155,7 @@ module.exports = (router) => {
 
     router.use((req, res, next) => {
        const token = req.headers['authorization'];
-       if (! token){
+       if (!token){
            res.json({ success: false, message:'No token provided'});
        } else {
            jwt.verify(token, config.secret, (err,decoded) => {
