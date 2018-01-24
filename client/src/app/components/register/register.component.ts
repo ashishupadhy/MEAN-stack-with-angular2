@@ -167,20 +167,18 @@ export class RegisterComponent implements OnInit {
 
 
   checkUsername() {
+    // Function from authentication file to check if username is taken
     this.authService.checkUsername(this.form.get('username').value).subscribe(data => {
+      // Check if success true or success false was returned from API
       if (!data.success) {
-        this.usernameValid = false;  
-        this.usernameMessage = data.message;  
+        this.usernameValid = false; // Return username as invalid
+        this.usernameMessage = data.message; // Return error message
       } else {
-        this.usernameValid = true;
-        this.usernameMessage = data.message;
+        this.usernameValid = true; // Return username as valid
+        this.usernameMessage = data.message; // Return success message
       }
     });
-
   }
-  //   console.log(this.form.get('email').value);
-  //   console.log(this.form.get('username').value);
-  // }
 
   ngOnInit() {
   }

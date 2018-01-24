@@ -7,15 +7,20 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active ">
-        <a class="nav-link" routerLink="/home">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/">Home 
+          <span class="sr-only">(current)</span></a>
       </li>
 
 
-      <li class="nav-item">
+      <li class="nav-item" >
         <a class="nav-link" routerLink="/dashboard">Dashboard</a>
       </li>
       <li class="nav-item  ">
         <a class="nav-link " routerLink="/profile">Profile </a>
+      </li>
+
+      <li class="nav-item  ">
+        <a class="nav-link " routerLink="/blog">Blog</a>
       </li>
 
       <li class="nav-item ">
@@ -25,18 +30,13 @@
 
 
       <li class="nav-item">
-        <a href='#' (click)="onLogoutClick()">Logout</a>
+        <a class="nav-link " (click) ="onLogoutClick()" routerLink="/logout">Logout</a>
       </li>
 
 
-      <li class="nav-item active">
+      <li class="nav-item ">
         <a class="nav-link " routerLink="/register">Register </a>
       </li>
-
-
-
-
-
 
 
     </ul>

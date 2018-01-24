@@ -1,7 +1,14 @@
   import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+<<<<<<< HEAD
 
+||||||| merged common ancestors
+=======
+import{tokenNotExpired} from 'angular2-jwt'
+
+
+>>>>>>> 959154373f053e1d3847cb846bb3b5ff75138a1b
 @Injectable()
 export class AuthService {
 
@@ -13,14 +20,14 @@ options;
   (  private http:Http) { }   
   
   createAuthenticationHeaders() {
-    this.loadToken();
+     this.loadToken();
     this.options = new RequestOptions({
       headers: new Headers({
-        'Content-type':'application/json',
-        'authorization':this.authToken
+        'Content-Type': 'application/json',
+        'authorization': this.authToken
 
       })
-    })
+    });
   }
 
 
@@ -42,8 +49,15 @@ checkEmail(email) {
 }
  
 login(user){
-  return this.http.post(this.domain + '/authentication/login',user).map(res =>res.json())
+  return this.http.post(this.domain + '/authentication/login',user).map(res => res.json());
 }
+
+logout(){
+  this.authToken = null;
+  this.user = null;
+  localStorage.clear();
+}
+<<<<<<< HEAD
 
  logout(){
    this.authToken= null;
@@ -52,6 +66,10 @@ login(user){
  }
 
 
+||||||| merged common ancestors
+=======
+
+>>>>>>> 959154373f053e1d3847cb846bb3b5ff75138a1b
 storeUserData(token,user){
   localStorage.setItem('token',token); 
   localStorage.setItem('user',JSON.stringify(user));
@@ -60,9 +78,13 @@ storeUserData(token,user){
 }   
  getProfile() {
 this.createAuthenticationHeaders();
-return this.http.get(this.domain +'/authentication/profile', this.options).map(res => res.json());
-
+return this.http.get(this.domain + '/authentication/profile', this.options).map(res => res.json());
+  
 
  } 
+
+ loggedIn( ){
+   return tokenNotExpired();
+ }
 }
-  
+    

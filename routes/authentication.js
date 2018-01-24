@@ -154,24 +154,11 @@ module.exports = (router) => {
     });
 
     router.use((req, res, next) => {
-       const token = req.headers['authorization'];
-       if (!token){
-           res.json({ success: false, message:'No token provided'});
-       } else {
-           jwt.verify(token, config.secret, (err,decoded) => {
-               if(err) {
-                   res.json({success:false, message:'Token Invalid: ' + err });
-               }else {
-                   req.decoded = decoded;
-                   next();
-               }
-                
 
-           });
-       }
-    });
-
-   router.get('/profile', (req, res) => {
+  /* ===============================================================
+     Route to get user's profile data
+  =============================================================== */
+  router.get('/profile', (req, res) => {
     // Search for user in database
     User.findOne({ _id: req.decoded.userId }).select('username email').exec((err, user) => {
       // Check if error connecting
@@ -185,8 +172,8 @@ module.exports = (router) => {
           res.json({ success: true, user: user }); // Return success, send user object to frontend for profile
         }
       }
-    });
+    }); 
   });
 
-    return router;
+  return router; // Return router object to main index.js
 }
