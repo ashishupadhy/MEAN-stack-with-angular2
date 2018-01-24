@@ -11,6 +11,8 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 // import { FlashMessagesModule } from 'angular2-flash-messages';
 import{AuthGuard} from './gaurds/auth.guards';
+import{NotAuthGuard} from './gaurds/notAuth.guard';
+import { BlogComponent } from './components/blog/blog.component'; 
 
 
 
@@ -25,7 +27,8 @@ import{AuthGuard} from './gaurds/auth.guards';
     NavbarComponent,
     RegisterComponent,  
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    BlogComponent
    
   ],
   imports: [
@@ -39,7 +42,7 @@ import{AuthGuard} from './gaurds/auth.guards';
     
     
   ],
-  providers: [AuthService , AuthGuard],
+  providers: [AuthService , AuthGuard, NotAuthGuard],
   bootstrap: [AppComponent,]
 })
 export class AppModule { }
