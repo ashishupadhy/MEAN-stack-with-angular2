@@ -1,0 +1,49 @@
+<h1 class ="page-header">Blog Feed</h1>
+
+<!-- <div class="row show-hide-message">
+<div [ngClass]="messageClass">
+  {{message}}
+</div>
+</div> -->
+
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" 
+(click)="newBlogForm()">New Post</button>
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default"
+ *ngIf="!newPost"(click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;
+ Reload</button>
+
+ <br />
+ <br />
+
+ <div *ngIf="!newPost">
+   <div class="panel panel-primary">
+   <div class="panel-heading">
+     <h3 class="panel-title">Post Title</h3>
+   </div>
+
+   <div class="panel-body">
+     In this complete online course, you will learn the fundamentals behind penetration testing as well as the attacks used to hack wifi hotspots, 
+     shut down websites and steal personal information - and how to stop them.
+Whether you're interested in a career in cybersecurity or in learning more to protect 
+yourself, this online course will give you the knowledge you need. 
+And all of Udemy's courses are on-demand online, so you can learn at your 
+
+
+</div>
+<br />
+
+<div class="panel-footer">
+  <p><strong>posted by:</strong>David</p>
+   <p><strong>Date:</strong>Jan 23,2018</p>
+   <div>
+     <p><strong>Likes:</strong>25</p> 
+      <p><strong>DiLikes:</strong>22</p>
+
+ </div>
+
+
+
+
+
+
+ 
