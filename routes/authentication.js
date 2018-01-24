@@ -189,7 +189,7 @@ module.exports = (router) => {
           res.json({ success: true, user: user }); // Return success, send user object to frontend for profile
         }
       }
-    });
+    }); 
   });
 
   return router; // Return router object to main index.js
