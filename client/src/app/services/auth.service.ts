@@ -1,14 +1,8 @@
   import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-<<<<<<< HEAD
+import { tokenNotExpired } from 'angular2-jwt';
 
-||||||| merged common ancestors
-=======
-import{tokenNotExpired} from 'angular2-jwt'
-
-
->>>>>>> 959154373f053e1d3847cb846bb3b5ff75138a1b
 @Injectable()
 export class AuthService {
 
@@ -57,19 +51,7 @@ logout(){
   this.user = null;
   localStorage.clear();
 }
-<<<<<<< HEAD
 
- logout(){
-   this.authToken= null;
-   this.user= null;
-   localStorage.clear();
- }
-
-
-||||||| merged common ancestors
-=======
-
->>>>>>> 959154373f053e1d3847cb846bb3b5ff75138a1b
 storeUserData(token,user){
   localStorage.setItem('token',token); 
   localStorage.setItem('user',JSON.stringify(user));

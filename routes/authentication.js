@@ -154,6 +154,20 @@ module.exports = (router) => {
     });
 
     router.use((req, res, next) => {
+    const token =   req.headers['authorization'];
+       if(!token){
+           res.json({success:false, message:'No token provided'});
+       }  else{
+           jwt.verify(token, config.secret,(err, decoded)=>{
+           if(err){
+               res.json({success:false, message:'Token invalid:' +err});
+           }else{
+               req.decoded = decoded;
+         next();   
+        }
+           });
+       }
+    });
 
   /* ===============================================================
      Route to get user's profile data
@@ -172,8 +186,7 @@ module.exports = (router) => {
           res.json({ success: true, user: user }); // Return success, send user object to frontend for profile
         }
       }
-    }); 
+    })
   });
-
   return router; // Return router object to main index.js
-}
+    }
