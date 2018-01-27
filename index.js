@@ -5,8 +5,10 @@ const mongoose = require('mongoose');  //node tool for mongodb
 const config = require('./config/database');//mongooes config
 const path = require('path');  //nodejs package for file path
 const authentication = require('./routes/authentication')(router);
+const blogs = require('./routes/blogs')(router);
+
 const bodyParser = require('body-parser');
-const cors =require('cors');
+const cors =require('cors'); 
 
 
 
@@ -35,6 +37,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 app.use(express.static(__dirname +'/client/dist/'));
 app.use('/authentication', authentication);
+app.use('/blogs',blogs);
 
 app.get('*',(req,res)=>{
 res.sendFile(path.join(__dirname +'/client/dist/index.html'));

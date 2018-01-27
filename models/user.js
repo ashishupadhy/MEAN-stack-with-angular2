@@ -46,34 +46,34 @@ const emailValidators = [{
 
 
 let usernameLengthChecker = (username) => {
-    
+
     if (!username) {
-        return false; 
+        return false;
     } else {
-       
+
         if (username.length < 3 || username.length > 15) {
-            return false; 
+            return false;
         } else {
-            return true; 
+            return true;
         }
     }
 };
 
 
 let validUsername = (username) => {
-    
+
     if (!username) {
-        return false; 
+        return false;
     } else {
-        
+
         const regExp = new RegExp(/^[a-zA-Z0-9]+$/);
-        return regExp.test(username); 
+        return regExp.test(username);
     }
 };
 
 
 const usernameValidators = [
-    
+
     {
         validator: usernameLengthChecker,
         message: 'Username must be at least 3 characters but no more than 15'
@@ -84,13 +84,13 @@ const usernameValidators = [
     }
 ];
 
-let passwordLengthChecker =(password)=>{
-    if (!password){
+let passwordLengthChecker = (password) => {
+    if (!password) {
         return false;
-    }else{
-        if(password.length <8 || password.length >35){
-            return false; 
-        }else{
+    } else {
+        if (password.length < 8 || password.length > 35) {
+            return false;
+        } else {
             return true;
         }
     }
@@ -98,24 +98,25 @@ let passwordLengthChecker =(password)=>{
 };
 
 
-let validPassword = (password)=>{
-    if (!password){
+let validPassword = (password) => {
+    if (!password) {
         return false;
-    }else{
+    } else {
         const regExp = new RegExp(/^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?[\d])(?=.*?[\W]).{8,35}$/);
         return regExp.test(password);
     }
 };
 
-const passwordValidators =[
+const passwordValidators = [
     {
-    validator:passwordLengthChecker,
-    message: 'password must be at least 8 character but not more than 35'
-},
-{validator:validPassword,
-    message:'must have one uppercase ,lowercase ,special character and number'
+        validator: passwordLengthChecker,
+        message: 'password must be at least 8 character but not more than 35'
+    },
+    {
+        validator: validPassword,
+        message: 'must have one uppercase ,lowercase ,special character and number'
 
-} 
+    }
 ];
 
 
@@ -129,7 +130,7 @@ const userSchema = new Schema({
         type: String, required: true, unique: true, lowercase: true, validate:
         usernameValidators
     },
-    password: { type: String, required: true, validate:passwordValidators }
+    password: { type: String, required: true, validate: passwordValidators }
 });
 
 
@@ -141,13 +142,13 @@ userSchema.pre('save', function (next) {
     bcrypt.hash(this.password, null, null, (err, hash) => {
         if (err) return next(err);
         this.password = hash;
-        next(); 
+        next();
     });
 });
 
-    
 
-userSchema.methods.comparePassword = function(password)  {
+
+userSchema.methods.comparePassword = function (password) {
     return bcrypt.compareSync(password, this.password);
 };
 
@@ -155,4 +156,3 @@ userSchema.methods.comparePassword = function(password)  {
 module.exports = mongoose.model('User', userSchema);
 
 
-        
