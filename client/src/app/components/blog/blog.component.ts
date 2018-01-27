@@ -29,7 +29,9 @@ setTimeout(()=>{
 }, 4000);
 }
 
-
+draftComment(){
+   
+}
   
 
   ngOnInit() {
