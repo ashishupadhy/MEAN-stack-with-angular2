@@ -6,9 +6,11 @@
 </div>
 </div> -->
 
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" (click)="newBlogForm()">New Post</button>
-<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp;
- Reload</button>
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost"
+(click)="newBlogForm()">New Post</button>
+<button [disabled]= "loadingBlogs"type="button" name="button" class="btn btn-default" *ngIf="!newPost"
+(click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Reload</button>
+
 
 <br />
 <br />
