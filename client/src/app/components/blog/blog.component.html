@@ -1,28 +1,28 @@
 <h1 class="page-header">Blog Feed</h1>
 
-<!-- <div class="row show-hide-message">
+ <div class="row show-hide-message" *ngIf="message && newPost">
 <div [ngClass]="messageClass">
   {{message}}
 </div>
-</div> -->
+</div> 
 
-<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost"
+<button type="button" name="button" class="btn btn-warning" *ngIf="!newPost" 
 (click)="newBlogForm()">New Post</button>
-<button [disabled]= "loadingBlogs"type="button" name="button" class="btn btn-default" *ngIf="!newPost"
-(click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Reload</button>
+<button [disabled]="loadingBlogs" type="button" name="button" class="btn btn-default" *ngIf="!newPost" (click)="reloadBlogs()"><span class="glyphicon glyphicon-repeat"></span>&nbsp;&nbsp; Reload</button>
 
 
 <br />
 <br />
 
 
-  <!-- New Blog Form -->
+<!-- New Blog Form -->
 <form [formGroup]="form" name="blogForm" (submit)="onBlogSubmit()" *ngIf="newPost">
   <!-- Title Input -->
   <div class="form-group">
     <label for="title">Title</label>
     <div [ngClass]="{'has-success': form.controls.title.valid, 'has-error': form.controls.title.dirty && form.controls.title.errors}">
-      <input type="text" name="title" class="form-control" placeholder="*Blog Title" autocomplete="off" formControlName="title" />
+      <input type="text" name="title" class="form-control" placeholder="*Blog Title" autocomplete="off" formControlName="title"
+      />
       <ul class="help-block">
         <li *ngIf="form.controls.title.dirty && form.controls.title.errors?.required">This field is required.</li>
         <li *ngIf="(form.controls.title.dirty && form.controls.title.errors?.minlength) || (form.controls.title.dirty && form.controls.title.errors?.maxlength)">Max length: 50, Min length: 5</li>
@@ -47,12 +47,10 @@
     </div>
   </div>
 
-   <!-- Go Back Button -->
-  <button [disabled]="processing" type="button" name="button" 
-  (click)="goBack()" class="btn btn-warning">Go Back</button>
+  <!-- Go Back Button -->
+  <button [disabled]="processing" type="button" name="button" (click)="goBack()" class="btn btn-warning">Go Back</button>
   <!-- Submit Button -->
-  <button [disabled]="processing || !form.valid" type="submit" name="button"
-   class="btn btn-success">Submit</button>
+  <button [disabled]="processing || !form.valid" type="submit" name="button" class="btn btn-success">Submit</button>
 
 
 </form>
@@ -61,80 +59,79 @@
 
 
 <div *ngIf="!newPost">
-  <div class="panel panel-primary">
+  <div class="panel panel-primary"  *ngFor="let blog of blogPosts">
     <div class="panel-heading">
-      <h3 class="panel-title">Post Title</h3>
+      <h3 class="panel-title">{{ blog.title }}</h3>
     </div>
 
     <div class="panel-body">
-      In this complete online course, you will learn the fundamentals behind penetration testing as well as the attacks used to
-      hack wifi hotspots, shut down websites and steal personal information - and how to stop them. Whether you're interested
-      in a career in cybersecurity or in learning more to protect yourself, this online course will give you the knowledge
-      you need. And all of Udemy's courses are on-demand online, so you can learn at your
-
+     {{blog.body}}
 
     </div>
     <br />
     <!--footer start  -->
     <div class="panel-footer">
-      <strong>posted by:</strong>David
+      <strong>posted by:</strong>{{ blog.createdBy }}
       <br />
-      <strong>Date:</strong>Jan 23,2018
-      <div>
-        <strong>Likes:</strong>25
+      <strong>Date:</strong>{{  blog.createdAt | date:'MMM dd, yyy' }}
+      <div *ngIf="username === blog.createdBy">
+        <strong>Likes:</strong>{{ blog.likes }}
         <br />
-        <strong>Dislikes:</strong>22
+        <strong>Dislikes:</strong>{{ blog.dislikes }}
 
       </div>
 
-      <a href="#"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
-      <a href="#"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
+      <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+      <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm 
+        btn-danger">Delete</button></a>
       <!--Likes  -->
       <div class="btn-group">
-  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-success dropdown-toggle"*ngIf="username !== blog.createdBy"
+         data-toggle="dropdown" 
+        aria-haspopup="true" aria-expanded="false">
    Likes:21
   </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Amit</a>
-    <a class="dropdown-item" href="#">Ashish</a>
-    <a class="dropdown-item" href="#">Praveen</a>
-    
-  </div>
-      <!--Dislikes  -->
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">Amit</a>
+          <a class="dropdown-item" href="#">Ashish</a>
+          <a class="dropdown-item" href="#">Praveen</a>
 
-      <!-- Example single danger button -->
-<div class="btn-group">
-  <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        </div>
+        <!--Dislikes  -->
+
+        <!-- Example single danger button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-warning dropdown-toggle"  *ngIf="username !== blog.createdBy"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
    Dislikes:15
   </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    
-  </div>
-</div>
-</div>
-    <!-- footer end -->
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
 
-<ul class="list-group">
-<li class="list-group-item">
-<button type="button" name="button" class="btn btn-sm btn-danger" 
-(click)="draftComment()">Post Comment</button>
-<br />
-<!-- <form>
+          </div>
+        </div>
+      </div>
+      <!-- footer end -->
+
+      <ul class="list-group">
+        <li class="list-group-item">
+          <button type="button" name="button" class="btn btn-sm btn-danger" (click)="draftComment()">Post Comment</button>
+          <br />
+          <!-- <form>
   <textarea name="comment" rows="10" cols="30" class "form-control"></textarea>
   <button type="button" name="button" class="btn btn-sm btn-info">Submit Post</button>
   <button type="button" name="button" class="btn btn-sm btn-danger">Cancel</button>
 
 </form> -->
 
-</li>
+        </li>
 
 
 
-</ul>
+      </ul>
 
 
+    </div>
   </div>
-</div>
