@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
+// import { ActivatedRoute, Router } from '@angular/router';
+// import { BlogService } from '../../../services/blog.service';
 
 @Component({
   selector: 'app-edit-blog',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditBlogComponent implements OnInit {
 
-  constructor() { }
+  message = false;
+
+  messageClass = false;
+  blog={
+    title:String,
+    body:String
+  }
+
+  processing= false;
+
+
+  constructor(
+    private location:Location
+  ) { }
+
+
+  updateBlogSubmit() {}
+ 
+ goBack() {
+   this.location.back();
+ }
 
   ngOnInit() {
+  
   }
 
 }
