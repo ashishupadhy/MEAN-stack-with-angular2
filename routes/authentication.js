@@ -188,5 +188,6 @@ module.exports = (router) => {
             }
         })
     });
-    return router; // Return router object to main index.js
+
+    return router; 
 }
