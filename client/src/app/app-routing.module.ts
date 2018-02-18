@@ -63,7 +63,6 @@ canActivate:[AuthGuard]
 @NgModule({
   declarations: [HomeComponent,DashboardComponent],
 
-
   imports: [RouterModule.forRoot(appRoutes)],
 
   providers: [],
