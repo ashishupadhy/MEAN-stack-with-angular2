@@ -15,15 +15,18 @@ export class BlogComponent implements OnInit {
   newPost = false;
   loadingBlogs = false;
   form;
+  commentForm;
   processing = false;
   username;
   blogPosts;
+  newComment =[];
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private blogService: BlogService
   ) {
     this.createNewBlogForm();
+    this.createCommentForm();
   }
 
   createNewBlogForm() {
@@ -43,6 +46,16 @@ export class BlogComponent implements OnInit {
       ])]
 
 
+    })
+  }
+
+  createCommentForm(){
+    this.commentForm=this.formBuilder.group({
+      comment:['',Validators.compose([
+        Validators.required,
+        Validators.minLength(1),
+        Validators.maxLength(200)
+      ])]
     })
   }
 
@@ -85,7 +98,9 @@ export class BlogComponent implements OnInit {
     }, 4000);
   }
 
-  draftComment() {
+  draftComment(id) {
+     this.newComment =[];
+    this.newComment.push(id);
 
   }
   onBlogSubmit() {
@@ -134,6 +149,25 @@ export class BlogComponent implements OnInit {
       this.blogPosts = data.blogs;
 
     });
+  }
+
+   likeBlog(id) {
+    // Service to like a blog post
+    this.blogService.likeBlog(id).subscribe(data => {
+      this.getAllBlogs(); // Refresh blogs after like
+    });
+  }
+
+// Function to disliked a blog post
+  dislikeBlog(id) {
+    // Service to dislike a blog post 
+    this.blogService.dislikeBlog(id).subscribe(data => {
+      this.getAllBlogs(); // Refresh blogs after dislike
+    });
+  }
+
+  postComment(id){
+
   }
 
   ngOnInit() {

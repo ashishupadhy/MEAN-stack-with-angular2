@@ -15,7 +15,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import{AuthGuard} from './gaurds/auth.guards';
 import{NotAuthGuard} from './gaurds/notAuth.guard';
 import { BlogComponent } from './components/blog/blog.component';
-import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component'; 
+import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.component';
+import { DeleteBlogComponent } from './components/blog/delete-blog/delete-blog.component'; 
 
 
 
@@ -33,7 +34,8 @@ import { EditBlogComponent } from './components/blog/edit-blog/edit-blog.compone
     LoginComponent,
     ProfileComponent,
     BlogComponent,
-    EditBlogComponent
+    EditBlogComponent,
+    DeleteBlogComponent
    
   ],
   imports: [
